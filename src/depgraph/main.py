@@ -5,6 +5,7 @@ from pathlib import Path
 from depgraph.graph import GraphError, build_graph, build_providers
 from depgraph.graph import ubuntu_dependencies
 from depgraph.order import installation_groups
+from depgraph.visualize import render_graph
 from depgraph.graph import parse_test_repository
 
 from depgraph.config import parse_arguments, print_configuration
@@ -67,6 +68,8 @@ def show_dependencies(config):
         print(f"  {name}: {requirement}")
 
     print_installation_order(graph)
+    render_graph(graph, config.output)
+    print(f"PNG created: {config.output}")
 
 
 def main(arguments=None):
@@ -101,6 +104,8 @@ def main(arguments=None):
             print("none")
 
         print_installation_order(graph)
+        render_graph(graph, config.output)
+        print(f"PNG created: {config.output}")
         return 0
 
     try:
