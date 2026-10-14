@@ -388,3 +388,34 @@ apt-cache depends bash
 ~~~bash
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ~~~
+
+### Результаты проверки с apt
+
+Сравнение выполнено через GitHub Actions
+на Ubuntu 24.04 LTS (amd64).
+
+Проверяемый пакет: bash
+Версия: 5.2.21-2ubuntu4
+
+Результаты:
+
+| Зависимость | Тип | Совпадение |
+|---|---|---|
+| libc6 | Pre-Depends | Да |
+| libtinfo6 | Pre-Depends | Да |
+| base-files | Depends | Да |
+| debianutils | Depends | Да |
+
+Все четыре непосредственные обязательные
+зависимости совпали с данными apt.
+
+Дополнительные категории Recommends и Suggests
+не включены в анализ.
+
+Программа формирует порядок групп зависимостей,
+но не заменяет полноценный алгоритм apt.
+Проверка версионных ограничений и разрешение
+конфликтов пакетов не реализованы.
+
+GitHub Actions: Compare dependencies with apt.
+Результат: Success.
