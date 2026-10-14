@@ -1,0 +1,24 @@
+name: Compare dependencies with apt
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/compare-apt.yml"
+  workflow_dispatch:
+
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check Ubuntu environment
+        run: |
+          cat /etc/os-release
+          dpkg --print-architecture
+
+      - name: Compare bash dependencies
+        run: |
+          sudo apt-get update -qq
+          apt-cache policy bash
+          apt-cache depends bash

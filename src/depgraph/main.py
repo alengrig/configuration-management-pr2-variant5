@@ -4,12 +4,23 @@ import sys
 from pathlib import Path
 from depgraph.graph import GraphError, build_graph, build_providers
 from depgraph.graph import ubuntu_dependencies
+from depgraph.order import installation_groups
 from depgraph.graph import parse_test_repository
 
 from depgraph.config import parse_arguments, print_configuration
 from depgraph.repository import RepositoryError
 from depgraph.repository import direct_dependencies
 from depgraph.repository import download_index, parse_index
+
+
+
+def print_installation_order(graph):
+    """Print dependency groups in dependency-first order."""
+    groups = installation_groups(graph)
+    print("Dependency-first installation groups:")
+
+    for number, members in enumerate(groups, start=1):
+        print(f"  {number}. {', '.join(members)}")
 
 
 def show_dependencies(config):
@@ -55,6 +66,8 @@ def show_dependencies(config):
     for name, requirement in unresolved:
         print(f"  {name}: {requirement}")
 
+    print_installation_order(graph)
+
 
 def main(arguments=None):
     """Run the dependency analysis application."""
@@ -87,6 +100,7 @@ def main(arguments=None):
         else:
             print("none")
 
+        print_installation_order(graph)
         return 0
 
     try:
