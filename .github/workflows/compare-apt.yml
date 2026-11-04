@@ -24,3 +24,22 @@ jobs:
             apt-cache policy "$package"
             apt-cache depends "$package"
           done
+
+      - name: Generate reference dependency graphs
+        run: |
+          sudo apt-get install -y graphviz
+          mkdir -p apt-graphs
+
+          for package in bash grep sed; do
+            apt-cache dotty "$package" > "apt-graphs/${package}.dot"
+            dot -Tpng "apt-graphs/${package}.dot" -o "apt-graphs/${package}.png"
+          done
+
+          ls -lh apt-graphs/
+
+      - name: Upload reference graphs
+        uses: actions/upload-artifact@v4
+        with:
+          name: apt-reference-graphs
+          path: apt-graphs/
+          if-no-files-found: error
