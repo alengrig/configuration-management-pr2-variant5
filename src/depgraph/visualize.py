@@ -5,6 +5,7 @@ import subprocess
 from pathlib import Path
 
 from depgraph.order import installation_groups
+from depgraph.mermaid import mermaid_source
 
 
 def render_graph(graph, output):
@@ -69,5 +70,10 @@ def render_graph(graph, output):
         raise RuntimeError(
             f"Graphviz error: {error.stderr}"
         ) from error
+
+    mermaid_path = output_path.with_suffix(".mmd")
+    mermaid_path.write_text(
+        mermaid_source(graph), encoding="utf-8"
+    )
 
     return output_path

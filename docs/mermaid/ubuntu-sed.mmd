@@ -1,0 +1,20 @@
+flowchart LR
+    n0["gcc-14-base"]
+    n1["libacl1"]
+    n2["libc6"]
+    n3["libgcc-s1"]
+    n4["libpcre2-8-0"]
+    n5["libselinux1"]
+    n6["sed"]
+    n1 --> n2
+    n2 --> n3
+    n3 --> n0
+    n3 --> n2
+    n4 --> n2
+    n5 --> n2
+    n5 --> n4
+    n6 --> n1
+    n6 --> n2
+    n6 --> n5
+    style n2 fill:#ffe2e2,stroke:#ac6666
+    style n3 fill:#ffe2e2,stroke:#ac6666

@@ -1,0 +1,42 @@
+flowchart LR
+    n0["base-files"]
+    n1["bash"]
+    n2["debianutils"]
+    n3["gawk"]
+    n4["gcc-14-base"]
+    n5["libc6"]
+    n6["libcrypt1"]
+    n7["libgcc-s1"]
+    n8["libgmp10"]
+    n9["libmpfr6"]
+    n10["libreadline8t64"]
+    n11["libsigsegv2"]
+    n12["libtinfo6"]
+    n13["readline-common"]
+    n0 --> n3
+    n0 --> n5
+    n0 --> n6
+    n1 --> n0
+    n1 --> n2
+    n1 --> n5
+    n1 --> n12
+    n2 --> n5
+    n3 --> n5
+    n3 --> n8
+    n3 --> n9
+    n3 --> n10
+    n3 --> n11
+    n5 --> n7
+    n6 --> n5
+    n7 --> n4
+    n7 --> n5
+    n8 --> n5
+    n9 --> n5
+    n9 --> n8
+    n10 --> n5
+    n10 --> n12
+    n10 --> n13
+    n11 --> n5
+    n12 --> n5
+    style n5 fill:#ffe2e2,stroke:#ac6666
+    style n7 fill:#ffe2e2,stroke:#ac6666

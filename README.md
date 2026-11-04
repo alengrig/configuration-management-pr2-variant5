@@ -515,3 +515,40 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 
 Для использования Graphviz необходима
 установленная программа dot.
+
+## Диаграммы Mermaid
+
+Программа строит граф зависимостей Ubuntu
+и формирует два представления:
+
+- PNG: изображение через Graphviz;
+- MMD: текстовая диаграмма Mermaid.
+
+### Пример графа без циклов
+
+```mermaid
+flowchart LR
+    n0["A"]
+    n1["B"]
+    n2["C"]
+    n3["D"]
+    n0 --> n1
+    n0 --> n2
+    n1 --> n3
+    n2 --> n3
+```
+
+### Сохранённые диаграммы
+
+- [simple](docs/mermaid/simple.mmd)
+- [cycle](docs/mermaid/cycle.mmd)
+- [ubuntu-bash](docs/mermaid/ubuntu-bash.mmd)
+- [ubuntu-grep](docs/mermaid/ubuntu-grep.mmd)
+- [ubuntu-sed](docs/mermaid/ubuntu-sed.mmd)
+
+### Проверка диаграмм
+
+Код Mermaid можно вставить в редактор:
+https://mermaid.live/edit
+
+Проект содержит 68 автоматических тестов.
