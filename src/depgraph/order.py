@@ -14,7 +14,7 @@ def _build_adjacency(graph):
     }
 
 
-class _ComponentFinder:
+class ComponentFinder:
     """Find strongly connected components with Tarjan's algorithm."""
 
     def __init__(self, adjacency):
@@ -133,7 +133,7 @@ def _order_components(components, links):
 def installation_groups(graph):
     """Order dependencies first and keep cycles together."""
     adjacency = _build_adjacency(graph)
-    components = _ComponentFinder(adjacency).find_components()
+    components = ComponentFinder(adjacency).find_components()
     links = _component_links(adjacency, components)
 
     return _order_components(components, links)
