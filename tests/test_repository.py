@@ -6,10 +6,14 @@ import unittest
 from unittest.mock import patch
 from urllib.error import URLError
 
-from depgraph.repository import RepositoryError
-from depgraph.repository import direct_dependencies, download_index
-from depgraph.repository import index_url, parse_index, read_fields
-
+from depgraph.repository import (
+    RepositoryError,
+    direct_dependencies,
+    download_index,
+    index_url,
+    parse_index,
+    read_fields,
+)
 
 SAMPLE_INDEX = (
     "Package: alpha\n"

@@ -6,7 +6,6 @@ from io import StringIO
 
 from depgraph.config import parse_arguments, print_configuration
 
-
 REPOSITORY_URL = "https://archive.ubuntu.com/ubuntu"
 
 

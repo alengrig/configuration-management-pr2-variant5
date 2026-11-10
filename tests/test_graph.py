@@ -2,8 +2,12 @@
 
 import unittest
 
-from depgraph.graph import GraphError, build_graph
-from depgraph.graph import parse_test_repository, ubuntu_dependencies
+from depgraph.graph import (
+    GraphError,
+    build_graph,
+    parse_test_repository,
+    ubuntu_dependencies,
+)
 
 
 class GraphTests(unittest.TestCase):

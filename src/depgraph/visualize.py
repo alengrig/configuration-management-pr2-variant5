@@ -4,8 +4,8 @@ import json
 import subprocess
 from pathlib import Path
 
-from depgraph.order import installation_groups
 from depgraph.mermaid import mermaid_source
+from depgraph.order import installation_groups
 
 
 def validate_output_path(output):

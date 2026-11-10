@@ -6,7 +6,6 @@ from urllib.error import URLError
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 
-
 INDEX_PATH = "dists/noble/main/binary-amd64/Packages.xz"
 
 
